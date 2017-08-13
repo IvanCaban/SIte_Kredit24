@@ -1,0 +1,289 @@
+/***************CSS Reset************************/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a:link, a:visited, a:hover, a:focus{
+	text-decoration: none;
+}
+button, button:focus, button:active{
+	border: none;
+	outline: none;
+}
+input{
+	outline: none;
+}
+/****************Independent******************/
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i');
+body{
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+}
+.l-wrapper{
+	max-width: 1200px;
+	padding: 0 10px;
+	margin: 0 auto;
+}
+.main-button{
+	color: #fff;
+	background-color: #2ECC71;
+	border-radius: 5px;
+	font-size: 18px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color .25s;
+}
+	.main-button:hover{
+		background-color: #29B762;
+	}
+	.e-main-button__login{
+		display: inline-block;
+		width: 12px;
+		height: 16px;
+		margin: 0px 7px -2px -7px;
+		background: url("data:image/svg+xml;utf8,<svg id='Слой_1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11.6 15'><path d='M10.6 15c0-2.4-2.1-4.4-4.8-4.4S1 12.6 1 15' fill='none' stroke='#FFFFFF' stroke-width='2' stroke-miterlimit='10'/><ellipse cx='5.8' cy='3.9' rx='2.6' ry='2.9' fill='none' stroke='#FFFFFF' stroke-width='2' stroke-miterlimit='10' /></svg>") no-repeat center;
+	}
+
+/******************Header**********************/
+.b-header{
+	background-color: #EEE2C9;
+	width: 100%;
+}
+	.m-wrapper--header{
+		width: 83.333%;
+		margin: 0 auto;
+		height: 420px;	
+		background: url(Img/header.jpg) no-repeat;
+		background-position: right;
+	}
+	.b-header__top-line{
+		width: 100%;
+		margin: 0 auto;
+		padding: 35px 0 70px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+	}
+		.logo{
+			background: url("data:image/svg+xml;utf8,<svg id='Слой_1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 203.7 64'><path d='M96.6 42.4c-1.2-2.8-2.8-5.3-4.2-8-.4-.7-.7-.5-1.1 0-1.4 1.9-3.2 3.6-2.6 6.4.2 1-.3 1.3-1.3 1.3-2.9 0-2.9.1-2.9-2.9V22.4c0-1.2.3-1.6 1.6-1.6 2.8.1 2.8 0 2.8 2.8V31c.9-.6 1.3-1.3 1.8-2 1.6-2.1 3.3-4.3 4.8-6.5.9-1.3 1.9-1.7 3.4-1.7h2.7c-1.6 2.1-3.2 4.4-4.5 5.9-1.8 2.2-2.2 4.1-.5 6.5 1.6 2.4 2.8 5.1 4.2 7.6.3.5.7.9.2 1.5-1.5.1-2.9.1-4.4.1zM197.3 42.4c-.3 0-.4-2-.3-3 .1-1.2-.4-1.5-1.5-1.5h-7.7c-1.1 0-1.4-.4-1.2-1.4.7-4.9 1.4-9.9 2-14.8.1-.7.4-.9 1.1-.9 3.3-.2 3.3-.3 2.9 3-.4 2.8-.7 5.6-1.2 8.3-.2 1.2.1 1.5 1.3 1.5 4.3 0 4.3 0 4.3-4.3v-5.2c0-.9.3-1.1 1.1-1.2 3.2-.1 3.2-.2 3.2 3v6.6c0 .6-.1 1.1.8 1.1 1.6 0 1.6 1.1 1.6 2 0 1.1 0 2.2-1.1 2.2-1.2 0-1.3.6-1.3 1.6s.1 3-.3 3h-3.7zM162.5 42c-3.4-1.2-5-3.3-5.2-6.9-.1-.9 0-1.8 0-2.7 0-1 .4-2.4-1.5-2.2-.3 0-.5-.3-.5-.6v-2.4c-.1-1.3.9-1 1.6-1.1.6-.1.4-.6.4-1 0-1.3.1-2.7 0-4-.1-1 .3-1.5 1.3-1.3h.2c3 0 2.5-.3 2.5 2.4 0 3.9 0 3.9 3.9 3.9 2.1 0 3 1.4 2.3 3.5-.2.6-.7.5-1.1.5h-4c-.8 0-1.1.3-1.1 1.1v1.3c0 4.7.3 5.1 5.1 5.3.9 0 1.3.3 1.1 1.2-.1 1.1.2 3-.6 3.1-.8.3-2.7.5-4.4-.1zM102.7 42.4c0-4.9 0-9.8.1-14.6 0-.5-.3-1.2.4-1.5.7-.2 1 .4 1.3.9.4.7.8.9 1.6.3 2-1.4 4.3-1.3 6.6-1.2.6 0 .7.2.8.8.4 2.9.2 3.2-2.7 3.3-2.8 0-3.9 1.1-3.9 3.8v6.6c0 .6.2 1.7-.5 1.7-1.3-.1-2.5-.1-3.7-.1zM149.5 42.4c-.2 0-.3-.1-.3-.3 0-4.7.2-9.4 0-14.1 0-1.9.9-1.7 2.1-1.7 1.3 0 2.3-.1 2.1 2-.3 4-.3 8-.1 12 0 .7.3 2-.2 2.1h-3.6zM176.7 42.4h-5.9c-.9 0-1.3-.2-1.3-1.2.1-1.7 0-3.4 0-5 .2-3.8 2.5-6.2 6.3-6.5.7-.1 1.3 0 2 0 1.3 0 2.2-.7 2.2-2.1 0-1.3-.8-2.1-2.1-2.1-2 0-4-.1-6.1 0-1.2.1-1.5-.3-1.5-1.5 0-2.8 0-2.8 2.8-2.8h4.9c3.5.1 6.3 3 6.3 6.4 0 3.5-2.8 6.3-6.5 6.4h-2.2c-1.6.2-2.7 2.5-1.9 3.8.3.5.8.3 1.2.3 2.5 0 4.9.1 7.4 0 1.1 0 1.4.2 1.4 1.4 0 2.9 0 2.9-2.8 2.9h-4.2zM151.3 19.3c1.3 0 2.7 1.2 2.8 2.6.1 1.4-1.1 2.7-2.6 2.8-1.5.1-2.9-1.1-2.9-2.6 0-1.4 1.3-2.8 2.7-2.8zM146.2 40.7v-19c0-1.4-.4-1.6-1.7-1.6h-1c-1.1 0-1.5.3-1.4 1.4.1 1.8 0 3.6 0 5.7-1-.5-1.7-.9-2.5-1.1-5.5-1.4-10.6 4-9.5 9.8.7 3.4 2.5 5.3 5.2 6.3 1.7.6 5.4.4 7.2-1.1.9-.8 1.6-.5 2 .3.2.5.6 1.1 1.2.9.8-.4.4-1.1.5-1.6zm-8.1-2.2c-2.2 0-4-2-4-4.3 0-2.4 1.6-4.2 3.9-4.3 2.2-.1 4.1 1.9 4.1 4.2 0 2.4-1.8 4.4-4 4.4zM125.2 37.1c-.9 1.1-2.1 1.5-3.8 1.2 2.3-2.7 4.3-5.3 6.5-7.8 1.1-1.2.9-1.9-.2-2.8-2.6-2.1-5.5-2.7-8.6-1.3-3.2 1.4-4.7 4.1-4.8 7.5-.1 3.5 1.4 6.1 4.5 7.8.5.3 1.8.7 3.1.7 2.4 0 3.8-.7 4.5-1.1 2.8-1.6 2.8-2.1.6-4.3-.7-.6-1.1-.9-1.8.1zm-1.9-7c-1.5 2-3 3.9-4.6 6.1-1.1-4 1-6.8 4.6-6.1z' fill='#2C3E50'/><g><path d='M42.2 45.1h-5.1c-.7 0-.9-.6-1.1-1.1-1.7-3.1-3.4-6.2-5.2-9.5-1.3 1.8-2.7 3.3-3.7 5.1-.7 1.2-.3 2.7-.2 4.1 0 1.1-.4 1.4-1.4 1.4-3.9.1-3.9.1-3.9-3.8v-21c0-1.1.3-1.5 1.5-1.5 3.9 0 3.9 0 3.9 3.9v8.7c.1 0 .2.1.3.1 1.7-2.2 3.3-4.4 5-6.7 1.1-1.5 2.3-3 3.4-4.6.7-1.1 1.5-1.5 2.8-1.4 1.3.1 2.5 0 4.2 0-1 1.4-1.8 2.5-2.6 3.6-1.6 2.1-3.1 4.3-4.8 6.3-.8 1-.7 1.7-.1 2.7 2.3 4.1 4.5 8.3 6.8 12.4 0 .3.3.7.2 1.3z' fill='#F9B01C'/><path d='M4 59.1V36.6c0-.5-.4-.9-.9-.9H.9c-.5 0-.9.4-.9.9v26.5c0 .5.4.9.9.9h26.5c.5 0 .9-.4.9-.9v-2.2c0-.5-.4-.9-.9-.9H4.9c-.5 0-.9-.4-.9-.9z' fill='#6EC9B5'/><path d='M60 59.1V36.6c0-.5.4-.9.9-.9h2.2c.5 0 .9.4.9.9v26.5c0 .5-.4.9-.9.9H36.6c-.5 0-.9-.4-.9-.9v-2.2c0-.5.4-.9.9-.9h22.5c.5 0 .9-.4.9-.9z' fill='#4CC4E6'/><path d='M4 4.9v22.5c0 .5-.4.9-.9.9H.9c-.5 0-.9-.4-.9-.9V.9C0 .4.4 0 .9 0h26.5c.5 0 .9.4.9.9v2.2c0 .5-.4.9-.9.9H4.9c-.5 0-.9.4-.9.9z' fill='#E6622C'/><path class='st5' d='M60 4.9v22.5c0 .5.4.9.9.9h2.2c.5 0 .9-.4.9-.9V.9c0-.5-.4-.9-.9-.9H36.6c-.5 0-.9.4-.9.9v2.2c0 .5.4.9.9.9h22.5c.5 0 .9.4.9.9z' fill='#8BC446'/></g></svg>") no-repeat center;	width: 204px;
+			height: 64px;
+			width: 204px;
+			display: block;
+		}
+		.m-main-button--login{
+			height: 45px;
+			width: 100px;
+		}
+	.b-header__mid-line{
+		width: 42%;
+	}
+		.b-header__title{
+			font-size: 46px;
+			font-weight: bold;
+		 	line-height: 54px;
+	  		color : #2C3E50;
+	  		padding-bottom: 25px;
+		}	
+		.b-header__sub-title{
+			font-size : 18px;
+			line-height : 24px;
+			color : #2C3E50;
+		}
+/******************Modal-Window**********************/
+#modal{
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .7);
+	display: none;
+	position: fixed;
+	top:0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+#modal-close{
+	font-size: 35px;
+	cursor: pointer;
+}
+	.b-modal-win{
+		width: 700px;
+		height: 380px;
+		border-radius: 5px;
+		background: #fff;
+		position: absolute;
+		top: calc(50% - 160px);
+		left: calc(50% - 350px);
+		display: flex;
+		flex-wrap: wrap;
+	}
+		.b-modal-win__left, .b-modal-win__rigth{
+			box-sizing: border-box;
+		}
+		.b-modal-win__rigth{
+			width: 325px;
+			background-color: rgba(44, 62, 80, .1);
+		}
+		.b-modal-win__left{
+			width: 375px;
+			padding: 50px 35px;
+		}
+			.b-modal-win__title{
+				font-weight : bold;
+				font-size : 32px;
+				color : #34495E;
+				padding-bottom: 45px;
+			}
+			.b-modal-win__input{
+				width: 300px;
+				height: 40px;
+				margin-bottom: 20px;
+				box-sizing: border-box;
+				border-radius: 5px;
+				text-align: center;
+				border: 1px solid #95A5A6;
+				color: #95A5A6;
+				font-size : 15px;
+			}
+			.b-modal-win__input:focus::-webkit-input-placeholder {color: transparent}
+			.b-modal-win__input:focus::-moz-placeholder{color: transparent}
+			.b-modal-win__input:focus:-moz-placeholder{color: transparent}
+			.b-modal-win__input:focus:-ms-input-placeholder{color: transparent}
+			
+			.b-modal-win__input::-webkit-input-placeholder {color: #95A5A6; font-size: 15px;}
+			.b-modal-win__input:-moz-placeholder{color: #95A5A6; font-size: 15px;}
+			.b-modal-win__input:-moz-placeholder{color: #95A5A6; font-size: 15px;}
+			.b-modal-win__input:-ms-input-placeholder{color: #95A5A6; font-size: 15px;}
+			
+
+			.m-main-button--modal{
+				width: 300px;
+				height: 44px;
+			}
+/****************Pick-Amount*********************/
+.b-pick-amount{
+	width: 83.333%;
+	display: flex;
+	margin: 0 auto;
+	height: 300px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px #777;
+}
+	.b-pick-amount__left{
+		width: 70%;
+		box-sizing: border-box;
+		padding: 3%;
+	}
+	.b-pick-amount__rigth{
+		width: 30%;
+		padding: 3%;
+		background-color: #ECF0F1;
+		box-sizing: border-box;
+	}
+	.b-pick-amount__title{
+		font-size: 18px;
+  		color: #2C3E50;
+	}
+
+	.b-pick-amount__selected-amount{
+		font-weight : bold;
+		font-size : 26px;
+		color : #2C3E50;
+		text-align: center;
+	}
+	.l-wrapper-supRange{
+		display: flex;
+		align-items: center;
+		width: 100%;
+		margin: 0 auto;
+	}
+		.b-pick-amount__min-amount, .b-pick-amount__max-amount{
+			font-weight : bold;
+			font-size : 15px;
+			color : #2980B9;
+			white-space: nowrap;
+		}
+		.b-pick-amount__min-amount{
+			padding-right: 10px;
+		}
+		.b-pick-amount__max-amount{
+			padding-left: 10px;
+		}
+		.b-pick-amount__line{
+			width: 100%;
+			border-bottom: 1.5px dotted #95A5A6;
+		}
+
+		/***webkit*****/
+		.b-pick-amount__range{
+			-webkit-appearance: none;
+			appearance: none;
+			width: 100%;
+			height: 10px;
+			background-color: #BDC3C7;
+			border-radius: 5px;
+		}
+		.b-pick-amount__range::-webkit-slider-thumb{
+			-webkit-appearance:none;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background: #fff;
+			box-shadow: 0 0 5px #777;
+			cursor: pointer;
+		}
+		/****mozila*****/
+		.b-pick-amount__range::-moz-range-track{
+			width: 100%;
+			height: 10px;
+			background-color: #BDC3C7;
+			border-radius: 5px;
+		}
+		.b-pick-amount__range::-moz-range-thumb{
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background: #fff;
+			box-shadow: 0 0 5px #777;
+			cursor: pointer;
+			border: none;
+		}

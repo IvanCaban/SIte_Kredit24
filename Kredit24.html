@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="Style.css">
+	<meta name="viewport" content="width=device-width" initial-scale=1>
+	<title>Kredit24</title>
+
+	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</head>
+<body>
+	<header class="b-header">
+		<div class="l-wrapper m-wrapper--header">
+			<div class="b-header__top-line">
+				<a href="#" class="logo"></a>
+				<button id="log-btn" class="main-button m-main-button--login"><i class="e-main-button__login"></i>Login</button>
+			</div>
+			<div class="b-header__mid-line">
+				<h1 class="b-header__title">Need Money Fast?</h1>
+				<p class="b-header__sub-title">Get up to Rp. 2 000 000 within just 1 hour!</p>
+			</div>
+			
+		</div>
+
+		<div id="modal">
+			<div class="b-modal-win">
+				<div class="b-modal-win__left">
+					<h3 class="b-modal-win__title">Dowload our app to quote for a loan!</h3>
+					<form class="b-modal-win__form">
+						<input type="email" name="e-mail" class="b-modal-win__input" placeholder="Your e-mail">
+						<input type="phone" name="phone" class="b-modal-win__input" placeholder="Your cell phone number">
+						<button class="main-button m-main-button--modal">Download app</button>
+					</form>
+					
+				</div>
+				<div class="b-modal-win__rigth">
+					<span id="modal-close">&times;</span>
+				</div>
+			</div>
+			
+		</div>
+	</header>
+
+	<body>
+		<section>
+			<div class="l-wrapper">
+				<div class="b-pick-amount">
+					<div class="b-pick-amount__left">
+						<h3 class="b-pick-amount__title">Pick Amount</h3>
+						<p class="b-pick-amount__selected-amount">Rp. 1 500 000</p>
+						<div class="l-wrapper-supRange">
+							<span class="b-pick-amount__min-amount">1 000 000</span>
+							<span class="b-pick-amount__line"></span>
+							<span class="b-pick-amount__max-amount">2 000 000</span> 
+						</div>
+						<input type="range" name="range-money" class="b-pick-amount__range" min="1000000" max="2000000" value="50%">
+						<h3 class="b-pick-amount__title">Credit term</h3>
+						<p class="b-pick-amount__selected-amount">20 days</p>
+						<div class="l-wrapper-supRange">
+							<span class="b-pick-amount__min-amount">10</span>
+							<span class="b-pick-amount__line"></span>
+							<span class="b-pick-amount__max-amount">30</span> 
+						</div>
+					</div>
+					<!--<input type="range" name="range-days" class="b-pick-amount__range">-->
+					<div class="b-pick-amount__rigth">
+						<h3 class="b-pick-amount__title">Loan Summary</h3>
+					</div>
+				</div>
+			</div>
+		</section>
+		<script src="script.js"></script>
+	</body>
+
+</body>
+</html>
