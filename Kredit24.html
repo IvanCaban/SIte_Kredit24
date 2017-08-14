@@ -13,7 +13,7 @@
 		<div class="l-wrapper m-wrapper--header">
 			<div class="b-header__top-line">
 				<a href="#" class="logo"></a>
-				<button id="log-btn" class="main-button m-main-button--login"><i class="e-main-button__login"></i>Login</button>
+				<button id="log-btn" class="main-button m-main-button--login"><i class="i-login"></i>Login</button>
 			</div>
 			<div class="b-header__mid-line">
 				<h1 class="b-header__title">Need Money Fast?</h1>
@@ -47,24 +47,67 @@
 				<div class="b-pick-amount">
 					<div class="b-pick-amount__left">
 						<h3 class="b-pick-amount__title">Pick Amount</h3>
-						<p class="b-pick-amount__selected-amount">Rp. 1 500 000</p>
+						<p class="b-pick-amount__selected-amount">
+							<span>Rp.</span> 
+							<span id="selected-money">1 500 000</span><i class="i-pen"></i></p>
 						<div class="l-wrapper-supRange">
 							<span class="b-pick-amount__min-amount">1 000 000</span>
 							<span class="b-pick-amount__line"></span>
 							<span class="b-pick-amount__max-amount">2 000 000</span> 
 						</div>
-						<input type="range" name="range-money" class="b-pick-amount__range" min="1000000" max="2000000" value="50%">
+
+						<div class="l-wrapper-for-range">
+							<input type="range" name="range-money" class="b-pick-amount__range" min="1000000" max="2000000" value="50%" id="range-money">
+						</div>
+						
 						<h3 class="b-pick-amount__title">Credit term</h3>
-						<p class="b-pick-amount__selected-amount">20 days</p>
+						<p class="b-pick-amount__selected-amount">
+							<span id="selected-days">20</span>
+							<span>days</span>  
+						</p>
 						<div class="l-wrapper-supRange">
 							<span class="b-pick-amount__min-amount">10</span>
 							<span class="b-pick-amount__line"></span>
 							<span class="b-pick-amount__max-amount">30</span> 
 						</div>
+						<div class="l-wrapper-for-range">
+							<input type="range" name="range-days" class="b-pick-amount__range" min="10" max="30" value="50%"  id="range-days">
+						</div>
+					
+				</div>
+				<div class="b-pick-amount__rigth">
+					<h3 class="b-pick-amount__title">Loan Summary</h3>
+					<div class="l-wrapper-with-bot-border">					
+						<p class="b-pick-amount__one-obj">
+							<span class="b-pick-amount__keys">Loan Amount</span>
+							<span>
+								<span class="b-pick-amount__Rp">Rp.</span>
+								<span class="b-pick-amount__value">1 600 000</span> 
+							</span>							
+						</p>
+						<p class="b-pick-amount__one-obj">
+							<span class="b-pick-amount__keys">Service Fee</span>
+							<span>
+								<span class="b-pick-amount__Rp">Rp.</span>
+								<span class="b-pick-amount__value">391 545</span> 
+							</span>							
+						</p>
 					</div>
-					<!--<input type="range" name="range-days" class="b-pick-amount__range">-->
-					<div class="b-pick-amount__rigth">
-						<h3 class="b-pick-amount__title">Loan Summary</h3>
+
+					<div>
+						<p class="b-pick-amount__one-obj">
+							<span class="b-pick-amount__keys">Total Payments</span>
+							<span>
+								<span class="b-pick-amount__Rp">Rp.</span>
+								<span class="b-pick-amount__value m-pick-amount__value--green">1 991 545</span> 
+							</span>							
+						</p>
+						<p class="b-pick-amount__one-obj">
+							<span class="b-pick-amount__keys">Due Date</span>
+							<span class="b-pick-amount__value m-pick-amount__value--green">March 13, 2017</span> 						
+						</p>
+
+						<button class="main-button m-main-button--get-money">Get money</button>
 					</div>
 				</div>
 			</div>
