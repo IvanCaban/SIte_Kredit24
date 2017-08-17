@@ -188,6 +188,7 @@ body{
 .b-header{
 	background-color: #EEE2C9;
 	width: 100%;
+	overflow: hidden;
 }
 	.m-wrapper--header{
 		width: 83.333%;
@@ -641,6 +642,8 @@ body{
 	display: block;
 	border-bottom: 1px solid #E8E8E8;
 	position: relative;
+	padding: 0 20px;
+	box-sizing: border-box;
 
 }
 	.b-question:first-of-type{
@@ -692,3 +695,54 @@ body{
 		font-size: 13px;
   		color: #BDC3C7;
 	}
+
+/********************Adaptive*******************************/	
+
+@media screen and (max-width: 1200px){
+}
+@media screen and  (max-width: 992px){
+	/*.m-wrapper--header{
+		background-position-x: 150%;
+	}*/
+}
+@media screen and (max-width: 768px){
+	.b-header{
+		height: 300px;
+		
+	}
+		.m-wrapper--header{
+			background-size: 380px auto;
+		}
+		.b-header__top-line{
+			padding: 15px 0 45px;
+		}
+			.logo{
+				height: 48px;
+				width: 153px;
+			}
+	.b-header__title{
+		font-size: 32px;
+		line-height: 36px;
+		padding-bottom: 20px;
+	}
+	.b-header__sub-title{
+		font-size: 15px;
+	}
+	.m-wrapper--header{
+		width: 100%;
+	}
+	.m-main-button--login{
+		width: 36px;
+		height: 36px;
+		overflow: hidden;
+		margin-right: 20px;
+	}
+		.m-main-button--login>.i-login{
+			margin-left: 6px;
+			margin-right: 20px;
+		}
+}
+@media screen and  (max-width: 480px){
+}
+@media screen and  (max-width: 320px){
+}

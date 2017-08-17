@@ -14,6 +14,9 @@ window.onclick = function(event) {
 	if(event.target == modalForm){
 		modalForm.style.display = "none";
 	}
+	if(event.target == modalSendSms){
+		modalSendSms.style.display = "none";
+	}
 }
 /******************************************************************************/
 var modalSendSms = document.getElementById("modal-send-sms");
@@ -28,11 +31,11 @@ closeSendSms.onclick = function(){
 	modalSendSms.style.display = "none";
 }
 
-window.onclick = function(event) {
+/*window.onclick = function(event) {
 	if(event.target == modalSendSms){
 		modalSendSms.style.display = "none";
 	}
-}
+}*/
 /******************************************************************************/
 var selectedMoney = document.getElementById("selected-money");
 var rangeMoney = document.getElementById("range-money");
