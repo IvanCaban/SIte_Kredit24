@@ -23,23 +23,23 @@
 			
 		</div>
 
-		<div id="modal">
-			<div class="b-modal-win">
-				<div class="b-modal-win__left">
-					<h3 class="b-modal-win__title">Dowload our app to quote for a loan!</h3>
-					<form class="b-modal-win__form">
-						<input type="email" name="e-mail" class="b-modal-win__input" placeholder="Your e-mail">
-						<input type="text" name="phone" class="b-modal-win__input" placeholder="Your cell phone number">
-						<button class="main-button m-main-button--modal">Download app</button>
+		<div id="modal-form">
+			<div class="b-modal-form-win">
+				<div class="b-modal-form-win__left">
+					<h3 class="b-modal-form-win__title">Dowload our app to quote for a loan!</h3>
+					<form class="b-modal-form-win__form">
+						<input type="email" name="e-mail" class="b-modal-form-win__input" placeholder="Your e-mail">
+						<input type="text" name="phone" class="b-modal-form-win__input" placeholder="Your cell phone number">
+						<button class="main-button m-main-button--modal-form">Download app</button>
 					</form>
 					
 				</div>
-				<div class="b-modal-win__rigth">
-					<span id="modal-close"><i class="i-close"></i></span>
-					<div class="l-modal-win__rigth__center">
+				<div class="b-modal-form-win__rigth">
+					<span id="modal-form-close"><i class="i-close"></i></span>
+					<div class="l-modal-form-win__rigth__center">
 						<div class="haf-regtan m-haf-regtan--left"></div>
-						<div class="b-modal__main-haf-logo">
-							<a href="#" class="b-modal__main-haf-logo__link">
+						<div class="b-modal-form__main-haf-logo">
+							<a href="#" class="b-modal-form__main-haf-logo__link">
 								<i class="i-haf-logo"></i>
 							</a>
 							<div class="l-wrapper-for-hand">
@@ -71,6 +71,7 @@
 						</div>
 
 						<div class="l-wrapper-for-range">
+							<i class="range-progress-line" id="line-money"></i>
 							<input type="range" name="range-money" class="b-pick-amount__range" min="1000000" max="2000000" value="50%" id="range-money">
 						</div>
 						
@@ -85,43 +86,77 @@
 							<span class="b-pick-amount__max-amount">30</span> 
 						</div>
 						<div class="l-wrapper-for-range">
-							<input type="range" name="range-days" class="b-pick-amount__range" min="10" max="30" value="50%"  id="range-days">
+							<i class="range-progress-line" id="line-days"></i>
+							<input type="range" name="range-days" class="b-pick-amount__range" min="10" max="30" value="50%"  id="range-days" id="range-days">
 						</div>
 					
-				</div>
-				<div class="b-pick-amount__rigth">
-					<h3 class="b-pick-amount__title">Loan Summary</h3>
-					<div class="l-wrapper-with-bot-border">					
-						<p class="b-pick-amount__one-obj">
-							<span class="b-pick-amount__keys">Loan Amount</span>
-							<span>
-								<span class="b-pick-amount__Rp">Rp.</span>
-								<span class="b-pick-amount__value">1 600 000</span> 
-							</span>							
-						</p>
-						<p class="b-pick-amount__one-obj">
-							<span class="b-pick-amount__keys">Service Fee</span>
-							<span>
-								<span class="b-pick-amount__Rp">Rp.</span>
-								<span class="b-pick-amount__value">391 545</span> 
-							</span>							
-						</p>
 					</div>
+					<div class="b-pick-amount__rigth">
+						<h3 class="b-pick-amount__title">Loan Summary</h3>
+						<div class="l-wrapper-with-bot-border">					
+							<p class="b-pick-amount__one-obj">
+								<span class="b-pick-amount__keys">Loan Amount</span>
+								<span>
+									<span class="b-pick-amount__Rp">Rp.</span>
+									<span class="b-pick-amount__value">1 600 000</span> 
+								</span>							
+							</p>
+							<p class="b-pick-amount__one-obj">
+								<span class="b-pick-amount__keys">Service Fee</span>
+								<span>
+									<span class="b-pick-amount__Rp">Rp.</span>
+									<span class="b-pick-amount__value">391 545</span> 
+								</span>							
+							</p>
+						</div>
 
-					<div>
-						<p class="b-pick-amount__one-obj">
-							<span class="b-pick-amount__keys">Total Payments</span>
-							<span>
-								<span class="b-pick-amount__Rp">Rp.</span>
-								<span class="b-pick-amount__value m-pick-amount__value--green">1 991 545</span> 
-							</span>							
-						</p>
-						<p class="b-pick-amount__one-obj">
-							<span class="b-pick-amount__keys">Due Date</span>
-							<span class="b-pick-amount__value m-pick-amount__value--green">March 13, 2017</span> 						
-						</p>
+						<div>
+							<p class="b-pick-amount__one-obj">
+								<span class="b-pick-amount__keys">Total Payments</span>
+								<span>
+									<span class="b-pick-amount__Rp">Rp.</span>
+									<span class="b-pick-amount__value m-pick-amount__value--green">1 991 545</span> 
+								</span>							
+							</p>
+							<p class="b-pick-amount__one-obj">
+								<span class="b-pick-amount__keys">Due Date</span>
+								<span class="b-pick-amount__value m-pick-amount__value--green">March 13, 2017</span> 						
+							</p>
 
-						<button class="main-button m-main-button--get-money">Get money</button>
+							<button id="get-money-btn" class="main-button m-main-button--get-money">Get money</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="modal-send-sms">
+				<div class="b-modal-send-sms-win">
+					<div class="b-modal-send-sms__top">
+						<span id="modal-send-sms-close"><i class="i-close"></i></span>
+						<i class="i-fly-mail"></i>
+						<h3 class="b-modal-send-sms__title">We sent you an SMS</h3>
+						<a href="#" class="b-modal-send-sms__link">Download the app to continue</a>
+					</div>
+					
+					<div class="b-modal-send-sms__bot">
+						<ul class="b-modal-send-sms__benefits-logo">
+							<li class="b-modal-send-sms__benefits__benefit-logo">
+								<i class="i-watch"></i>
+								
+							</li>
+							<li class="b-modal-send-sms__benefits__benefit-logo">
+								<i class="i-quote"></i>
+							</li>
+							<li class="b-modal-send-sms__benefits__benefit-logo">
+								<i class="i-mobile"></i>
+							</li>
+						</ul>
+
+						<ul class="b-modal-send-sms__benefits-descrittions">
+							<li class="b-modal-send-sms__benefits__descrip">Takes 2 minutes to apply</li>
+							<li class="b-modal-send-sms__benefits__descrip">Quick decision making</li>
+							<li class="b-modal-send-sms__benefits__descrip">Decision through a push notification</li>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -172,31 +207,43 @@
 
 				<div class="l-wrapper-for-questions">
 					<ul>
-						<li class="b-question">
-							<p class="b-question__question">What are the requirements to apply for a loan in Kredit24?</p>
+						<li class="b-question">				
 							<input type="checkbox" name="chek-question" id="check1" class="b-question__check">
-							<label for="check1" class="b-question__label"></label>
+							<label for="check1" class="b-question__label">
+								<i class="i-bracket"></i>
+								<p class="b-question__question">What are the requirements to apply for a loan in Kredit24?</p>
+							</label>
 							<div class="b-question__answer">Loans that can be raised is a minimum of Rp. 1 000 000 up to a maximum of Rp. 2 000 000. If you are a good customer, for a loan to the 3rd and so on, you can apply for loans up to Rp. 3 000 000.</div>
 						</li>
 
 						<li class="b-question">
-							<p class="b-question__question">How much loan amount can be submitted?</p>
+							
 							<input type="checkbox" name="chek-question" id="check2" class="b-question__check">
-							<label for="check2" class="b-question__label"></label>
+							<label for="check2" class="b-question__label">
+								<i class="i-bracket"></i>
+								<p class="b-question__question">How much loan amount can be submitted?</p>
+							</label>
 							<div class="b-question__answer">Loans that can be raised is a minimum of Rp. 1 000 000 up to a maximum of Rp. 2 000 000. If you are a good customer, for a loan to the 3rd and so on, you can apply for loans up to Rp. 3 000 000.</div>
 						</li>
 
 						<li class="b-question">
-							<p class="b-question__question">How do I apply for a loan?</p>
+							
 							<input type="checkbox" name="chek-question" id="check3" class="b-question__check">
-							<label for="check3" class="b-question__label"></label>
+							<label for="check3" class="b-question__label">
+								<i class="i-bracket"></i>
+								<p class="b-question__question">How do I apply for a loan?</p>
+								
+							</label>
 							<div class="b-question__answer">Loans that can be raised is a minimum of Rp. 1 000 000 up to a maximum of Rp. 2 000 000. If you are a good customer, for a loan to the 3rd and so on, you can apply for loans up to Rp. 3 000 000.</div>
 						</li>
 
 						<li class="b-question">
-							<p class="b-question__question">How does the system of repayment?</p>
+							
 							<input type="checkbox" name="chek-question" id="check4" class="b-question__check">
-							<label for="check4" class="b-question__label"></label>
+							<label for="check4" class="b-question__label">
+								<i class="i-bracket"></i>
+								<p class="b-question__question">How does the system of repayment?</p>
+							</label>
 							<div class="b-question__answer">Loans that can be raised is a minimum of Rp. 1 000 000 up to a maximum of Rp. 2 000 000. If you are a good customer, for a loan to the 3rd and so on, you can apply for loans up to Rp. 3 000 000.</div>
 						</li>
 					</ul>
