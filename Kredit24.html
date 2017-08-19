@@ -133,30 +133,44 @@
 				<div class="b-modal-send-sms-win">
 					<div class="b-modal-send-sms__top">
 						<span id="modal-send-sms-close"><i class="i-close"></i></span>
-						<i class="i-fly-mail"></i>
+						<div class="l-wrapper-for-fly-mail">
+							<i class="i-fly-mail"></i>
+						</div>
+						
 						<h3 class="b-modal-send-sms__title">We sent you an SMS</h3>
 						<a href="#" class="b-modal-send-sms__link">Download the app to continue</a>
+						<a href="#" class="google-play-link"><i class="i-google-play"></i></a>
 					</div>
 					
 					<div class="b-modal-send-sms__bot">
-						<ul class="b-modal-send-sms__benefits-logo">
-							<li class="b-modal-send-sms__benefits__benefit-logo">
-								<i class="i-watch"></i>
+						<ul class="b-modal-send-sms__benefits" id="b-modal-send-sms-slider">
+							<li class="b-modal-send-sms__benefits__benefit">
+								<div class="l-modal-send-sms-for-i">
+									<i class="i-watch"></i>
+								</div>
 								
+								<p class="b-modal-send-sms__benefits__descrip">Takes 2 minutes to apply</p>
 							</li>
-							<li class="b-modal-send-sms__benefits__benefit-logo">
-								<i class="i-quote"></i>
+							<li class="b-modal-send-sms__benefits__benefit">
+								<div class="l-modal-send-sms-for-i">
+									<i class="i-quote"></i>
+								</div>
+								
+								<p class="b-modal-send-sms__benefits__descrip">Quick decision making</p>
 							</li>
-							<li class="b-modal-send-sms__benefits__benefit-logo">
-								<i class="i-mobile"></i>
+							<li class="b-modal-send-sms__benefits__benefit">
+								<div class="l-modal-send-sms-for-i">
+									<i class="i-mobile"></i>
+								</div>
+								
+								<p class="b-modal-send-sms__benefits__descrip">Decision through a push notification</p>
 							</li>
 						</ul>
-
-						<ul class="b-modal-send-sms__benefits-descrittions">
-							<li class="b-modal-send-sms__benefits__descrip">Takes 2 minutes to apply</li>
-							<li class="b-modal-send-sms__benefits__descrip">Quick decision making</li>
-							<li class="b-modal-send-sms__benefits__descrip">Decision through a push notification</li>
-						</ul>
+						<div class="switchers b-modal-send-sms__switchers">
+							<span class="switchers__swithcer b-modal-send-sms__switcher switchers__switcher--active">0</span>
+							<span class="switchers__swithcer b-modal-send-sms__switcher">1</span>
+							<span class="switchers__swithcer b-modal-send-sms__switcher">2</span>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -167,7 +181,7 @@
 				<h2 class="section__title">How it works!</h2>
 				
 				<div class="l-instructions">
-					<ul class="l-instructions__list">
+					<ul class="l-instructions__list" id="instructions-slider">
 						<li class="l-instructions__list__li">
 							<div class="b-intruction">
 								<div class="b-intruction__img">
@@ -196,6 +210,18 @@
 							</div>
 						</li>
 					</ul>
+
+					<!--<div class="l-instructions__arrows">
+						<div class="l-instructions__arrows__left"></div>
+						<div class="l-instructions__arrows__right"></div>
+
+					</div>-->
+
+					<div class="switchers l-instructions__switchers">
+						<span class="switchers__swithcer l-instructions__switcher switchers__switcher--active">0</span>
+						<span class="switchers__swithcer l-instructions__switcher">1</span>
+						<span class="switchers__swithcer l-instructions__switcher">2</span>
+					</div>
 				</div>			
 			</div>
 		
