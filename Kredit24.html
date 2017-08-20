@@ -63,7 +63,8 @@
 						<h3 class="b-pick-amount__title m-pick-amount__title--center">Pick Amount</h3>
 						<p class="b-pick-amount__selected-amount">
 							<span>Rp.</span> 
-							<span id="selected-money">1 500 000</span><i class="i-pen"></i></p>
+							<input type="text" id="selected-money" class="b-pick-amount__selected-money" value="1 500 000"/><i class="i-pen" id="pen-money"></i>
+						</p>
 						<div class="l-wrapper-supRange">
 							<span class="b-pick-amount__min-amount">1 000 000</span>
 							<span class="b-pick-amount__line"></span>
@@ -139,6 +140,7 @@
 						
 						<h3 class="b-modal-send-sms__title">We sent you an SMS</h3>
 						<a href="#" class="b-modal-send-sms__link">Download the app to continue</a>
+						<p class="b-modal-send-sms__or">— or —</p>
 						<a href="#" class="google-play-link"><i class="i-google-play"></i></a>
 					</div>
 					
@@ -179,52 +181,58 @@
 		<section>
 			<div class="l-wrapper l-wrapper-with-bot-border">
 				<h2 class="section__title">How it works!</h2>
+				<div class="l-wrapper-for-b-instructions">
+					<div class="l-instructions">
+						<ul class="l-instructions__list" id="instructions-slider">
+							<li class="l-instructions__list__li">
+								<div class="b-intruction">
+									<div class="b-intruction__img">
+										<i class="i-hand-with-range"></i>
+									</div>
+									<h3 class="b-intruction__title">Pick amount and term</h3>
+									<p class="b-intruction__description">Done online; You can apply for a loan anywhere and anytime, either from home, from the office, in the mornings or evenings. Save your time to worthwhile activities.</p>
+								</div>
+							</li>
+							<li class="l-instructions__list__li">
+								<div>
+									<div class="b-intruction__img">					
+										<i class="i-quote-with-clock"></i>
+									</div>
+									<h3 class="b-intruction__title">We review quote in 4 hours</h3>
+									<p class="b-intruction__description">If your loan application is approved, we transfer directly into your account within the same day.</p>
+								</div>
+							</li>
+							<li class="l-instructions__list__li">
+								<div>
+									<div class="b-intruction__img">
+										<i class="i-get-money"></i>
+									</div>
+									<h3 class="b-intruction__title">Get money!</h3>
+									<p class="b-intruction__description">You can find out all the fees charged from the start you apply for a loan, and you have the flexibility to set the period and cost of the service adapts to the period of the loan. The faster, the smaller the service fees paid.</p>
+								</div>
+							</li>
+						</ul>
+
+
+						<div class="switchers l-instructions__switchers">
+							<span class="switchers__swithcer l-instructions__switcher switchers__switcher--active">0</span>
+							<span class="switchers__swithcer l-instructions__switcher">1</span>
+							<span class="switchers__swithcer l-instructions__switcher">2</span>
+						</div>
+					</div>			
 				
-				<div class="l-instructions">
-					<ul class="l-instructions__list" id="instructions-slider">
-						<li class="l-instructions__list__li">
-							<div class="b-intruction">
-								<div class="b-intruction__img">
-									<i class="i-hand-with-range"></i>
-								</div>
-								<h3 class="b-intruction__title">Pick amount and term</h3>
-								<p class="b-intruction__description">Done online; You can apply for a loan anywhere and anytime, either from home, from the office, in the mornings or evenings. Save your time to worthwhile activities.</p>
-							</div>
-						</li>
-						<li class="l-instructions__list__li">
-							<div>
-								<div class="b-intruction__img">					
-									<i class="i-quote-with-clock"></i>
-								</div>
-								<h3 class="b-intruction__title">We review quote in 4 hours</h3>
-								<p class="b-intruction__description">If your loan application is approved, we transfer directly into your account within the same day.</p>
-							</div>
-						</li>
-						<li class="l-instructions__list__li">
-							<div>
-								<div class="b-intruction__img">
-									<i class="i-get-money"></i>
-								</div>
-								<h3 class="b-intruction__title">Get money!</h3>
-								<p class="b-intruction__description">You can find out all the fees charged from the start you apply for a loan, and you have the flexibility to set the period and cost of the service adapts to the period of the loan. The faster, the smaller the service fees paid.</p>
-							</div>
-						</li>
-					</ul>
 
-					<!--<div class="l-instructions__arrows">
-						<div class="l-instructions__arrows__left"></div>
-						<div class="l-instructions__arrows__right"></div>
-
-					</div>-->
-
-					<div class="switchers l-instructions__switchers">
-						<span class="switchers__swithcer l-instructions__switcher switchers__switcher--active">0</span>
-						<span class="switchers__swithcer l-instructions__switcher">1</span>
-						<span class="switchers__swithcer l-instructions__switcher">2</span>
+					<div class="l-instructions__arrows">
+						<button class="l-instructions__arrows__left" id="prev-btn">
+							<i class="i-arrow m-arrow-left"></i>
+						</button>
+						<button class="l-instructions__arrows__right" id="next-btn">
+							<i class="i-arrow m-arrow-right"></i>
+						</button>
 					</div>
-				</div>			
+
+				</div>
 			</div>
-		
 		</section>
 
 		<section>
