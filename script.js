@@ -116,6 +116,15 @@ window.onresize = function(event) {
 	}
 }
 
+/*второй костиль*/
+window.onload = function(){
+	if(navigator['webkitTemporaryStorage']){
+		var progressLines = document.getElementsByClassName("range-progress-line");
+		for (var i = 0; i < progressLines.length; i++) {
+			progressLines[i].style.display = "block";
+		}
+	}
+}
 
 /*****************************INSTRUCTIONS SLIDER*********************************************/
 var instructionsSwitcher = document.getElementsByClassName("l-instructions__switcher");
