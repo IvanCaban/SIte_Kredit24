@@ -65,7 +65,7 @@ body{
 }
 	.l-wrapper-with-bot-border{
 		border-bottom: 1px solid #E8E8E8;
-		padding-bottom: 20px;
+		padding: 0 0 20px;
 	}
 	.l-wrapper-with-padding-top{
 		padding-top: 45px;

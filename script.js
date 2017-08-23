@@ -39,8 +39,7 @@ var lineMoney = document.getElementById("line-money");
 var distansMoney = rangeMoney.max - rangeMoney.min;
 
 rangeMoney.oninput = function() {
-	var tempStr = rangeMoney.value.toString();
-	selectedMoney.value = tempStr[0] + " " +tempStr[1]+tempStr[2]+tempStr[3] + " " +tempStr[4]+tempStr[5]+tempStr[6];
+	selectedMoney.value = transfotmToReadAbleFormat(rangeMoney.value);
 	lineMoney.style.width = ((rangeMoney.value -rangeMoney.min) * 100 / distansMoney) + "%";
 }
 
@@ -58,6 +57,9 @@ var permitionForMoneyInput = false;
 var penForMoneyInput = document.getElementById("pen-money");
 
 selectedMoney.onkeydown = function(event){
+	if(event.key == 'Enter'){
+		selectedMoney.onblur();
+	}
 	if(permitionForMoneyInput && givePemitionOnInput(event.key)){
 		return true;
 	}
@@ -76,16 +78,24 @@ selectedMoney.onblur = function(){
 	penForMoneyInput.style.display = "inline-block";
 	selectedMoney.classList.remove("m-pick-amount__selected-money--active");
 
-/**********************Временно наверное***********************/	
-/*	if(selectedMoney.value > rangeMoney.max){
+/**********************Временно наверное***********************/
+	var max = Number(rangeMoney.max);
+	var min = Number(rangeMoney.min);
+	var cur = transformFromReadAbleFormatToInt(selectedMoney.value);
+
+	if(cur > max){
 		rangeMoney.value = rangeMoney.max;
-		selectedMoney.value = rangeMoney.max;
-	} else if(selectedMoney.value < rangeMoney.min){
+		selectedMoney.value = transfotmToReadAbleFormat(rangeMoney.max);
+		lineMoney.style.width = "100%";
+	} else if(cur < min){
 		rangeMoney.value = rangeMoney.min;
-		selectedMoney.value = rangeMoney.min;
+		selectedMoney.value = transfotmToReadAbleFormat(rangeMoney.min);
+		lineMoney.style.width = "0%";
 	} else {
-		rangeMoney.value = selectedMoney.value;
-	}*/
+		rangeMoney.value = transformFromReadAbleFormatToInt(selectedMoney.value);
+		selectedMoney.value = transfotmToReadAbleFormat(selectedMoney.value.replace(/ /g, ""));
+		lineMoney.style.width = ((rangeMoney.value - rangeMoney.min) * 100 / distansMoney) + "%";
+	}
 }
 penForMoneyInput.onclick = function(){
 	permitionForMoneyInput = true;
@@ -166,4 +176,17 @@ function replaceSwitcherActive(index, switchers) {
 		switchers[i].classList.remove("switchers__switcher--active");
 	}
 	switchers[index].classList.add("switchers__switcher--active");
+}
+
+function transfotmToReadAbleFormat(str) {
+	return str[0] + ' ' + str[1]+str[2]+str[3] + ' ' + str[4]+str[5]+str[6];
+}
+
+function transformFromReadAbleFormatToInt(str) {
+	var temp = "";
+	for (var i = 0; i < str.length; i++) {
+		if(str[i] != " ")
+			temp += str[i];
+	}
+	return Number(temp);
 }
