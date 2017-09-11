@@ -112,7 +112,7 @@ for (var i = 0; i < sendSmsSwitcher.length; i++) {
 }
 
 function switchSmsSlide() {
-	var index = Number(this.innerHTML);	
+	var index = Number(this.dataset.index);	
 	sendSmsSlider.style.transform = "translateX(-"+index * 300+ "px)";
 	replaceSwitcherActive(index, sendSmsSwitcher);
 }
@@ -127,14 +127,13 @@ window.onresize = function(event) {
 }
 
 /*второй костиль*/
-window.onload = function(){
-	if(navigator['webkitTemporaryStorage']){
-		var progressLines = document.getElementsByClassName("range-progress-line");
-		for (var i = 0; i < progressLines.length; i++) {
-			progressLines[i].style.display = "block";
-		}
+if(navigator['webkitTemporaryStorage']){
+	var progressLines = document.getElementsByClassName("range-progress-line");
+	for (var i = 0; i < progressLines.length; i++) {
+		progressLines[i].style.display = "block";
 	}
 }
+
 
 /*****************************INSTRUCTIONS SLIDER*********************************************/
 var instructionsSwitcher = document.getElementsByClassName("l-instructions__switcher");
@@ -166,7 +165,7 @@ function switchInstructSlideByBtn(counter){
 }
 
 function switchInstructSlide() {
-	var index = Number(this.innerHTML);	
+	var index = Number(this.dataset.index);	
 	instructionsSlider.style.transform = "translateX(-"+index * 320+ "px)";
 	replaceSwitcherActive(index, instructionsSwitcher);
 }
