@@ -6,7 +6,7 @@
 	<script src="script.js" defer></script>
 	<meta name="viewport" content="width=device-width" initial-scale=1>
 	<title>Kredit24</title>
-
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
 	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </head>
 <body>
@@ -14,7 +14,7 @@
 		<div class="l-wrapper m-wrapper--header">
 			<div class="b-header__top-line">
 				<a href="#" class="logo"></a>
-				<button id="log-btn" class="main-button m-main-button--login"><i class="i-login"></i><span>Login</span></button>
+				<button class="main-button m-main-button--login btn-open-modal" data-form="modal-form"><i class="i-login"></i><span>Login</span></button>
 			</div>
 			<div class="b-header__mid-line">
 				<h1 class="b-header__title">Need Money Fast?</h1>
@@ -23,19 +23,19 @@
 			
 		</div>
 
-		<div id="modal-form">
+		<div id="modal-form" class="modal-form">
 			<div class="b-modal-form-win">
 				<div class="b-modal-form-win__left">
 					<h3 class="b-modal-form-win__title">Dowload our app to quote for a loan!</h3>
 					<form class="b-modal-form-win__form">
 						<input type="email" name="e-mail" class="b-modal-form-win__input" placeholder="Your e-mail">
-						<input type="text" name="phone" class="b-modal-form-win__input" placeholder="Your cell phone number">
+						<input type="tel" name="phone" class="b-modal-form-win__input" placeholder="Your cell phone number">
 						<button class="main-button m-main-button--modal-form">Download app</button>
 					</form>
 					
 				</div>
 				<div class="b-modal-form-win__rigth">
-					<span id="modal-form-close"><i class="i-close"></i></span>
+					<span class="btn-close-modal" data-form="modal-form"><i class="i-close"></i></span>
 					<div class="l-modal-form-win__rigth__center">
 						<div class="haf-regtan m-haf-regtan--left"></div>
 						<div class="b-modal-form__main-haf-logo">
@@ -123,16 +123,16 @@
 								<span class="b-pick-amount__value m-pick-amount__value--green">March 13, 2017</span> 						
 							</p>
 
-							<button id="get-money-btn" class="main-button m-main-button--get-money">Get money</button>
+							<button class="main-button m-main-button--get-money btn-open-modal" data-form="modal-send-sms">Get money</button>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div id="modal-send-sms">
+			<div id="modal-send-sms" class="modal-form">
 				<div class="b-modal-send-sms-win">
 					<div class="b-modal-send-sms__top">
-						<span id="modal-send-sms-close"><i class="i-close"></i></span>
+						<span class="btn-close-modal" data-form="modal-send-sms"><i class="i-close"></i></span>
 						<div class="l-wrapper-for-fly-mail">
 							<i class="i-fly-mail"></i>
 						</div>
@@ -292,7 +292,7 @@
 	</main>
 
 	<footer class="b-footer">
-		<p class="b-footer__kredit">2017 &copy; <a href="#" class="b-footer__kredit__link">kredit24-7.com<a> </p>
+		<p class="b-footer__kredit">2017 &copy; <a href="#" class="b-footer__kredit__link">kredit24-7.com</a> </p>
 	</footer>	
 </body>
 

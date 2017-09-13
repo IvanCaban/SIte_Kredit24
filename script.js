@@ -1,186 +1,212 @@
-/**********************MODAL-FORM*********************************/
-var modalForm = document.getElementById("modal-form");
-var logBtn = document.getElementById("log-btn");
-var closeForm = document.getElementById("modal-form-close");
-
-logBtn.onclick = function(){
-	modalForm.style.display = "block";
-}
-
-closeForm.onclick = function() {
-	modalForm.style.display = "none";
-}
-
-window.onclick = function(event) {
-	if(event.target == modalForm){
-		modalForm.style.display = "none";
+var OpenCloseModalForms =  function(){
+	var btnOpenModal = document.getElementsByClassName("btn-open-modal");
+	for(var i = 0, btnLength = btnOpenModal.length; i < btnLength; i++){
+		btnOpenModal[i].addEventListener('click', function(){openModal(this.dataset.form.toString());});
 	}
-	if(event.target == modalSendSms){
-		modalSendSms.style.display = "none";
+	var btnCloseModal = document.getElementsByClassName("btn-close-modal");
+	for(var i = 0, btnLength = btnCloseModal.length; i < btnLength; i++){
+		btnCloseModal[i].addEventListener('click', function(){closeModal(this.dataset.form.toString());});
+	}
+
+	window.addEventListener('click', function(event){openModalByTarget(event.target)});
+
+	var modalFroms = document.getElementsByClassName("modal-form");
+	function openModalByTarget(target){
+		for(var i = 0, modalLength = modalFroms.length; i < modalLength; i++){
+			if(modalFroms[i] == target)
+				target.classList.remove("modal-form--active");
+		}		
+	}
+	function openModal(id){
+		document.getElementById(id).classList.add("modal-form--active");
+	}
+	function closeModal(id){
+		document.getElementById(id).classList.remove("modal-form--active");
 	}
 }
-/**************************MODAL-SEND-SMS**********************************************/
-var modalSendSms = document.getElementById("modal-send-sms");
-var getMoneyBtn = document.getElementById("get-money-btn");
-var closeSendSms = document.getElementById("modal-send-sms-close");
-
-getMoneyBtn.onclick = function(){
-	modalSendSms.style.display = "block";
-}
-
-closeSendSms.onclick = function(){
-	modalSendSms.style.display = "none";
-}
+OpenCloseModalForms();
 
 /***********************************INPUT-RANGE*******************************************/
-var selectedMoney = document.getElementById("selected-money");
-var rangeMoney = document.getElementById("range-money");
-var lineMoney = document.getElementById("line-money");
-var distansMoney = rangeMoney.max - rangeMoney.min;
+var InputRanges = function(){
+	var selectedMoney = document.getElementById("selected-money");
+	var rangeMoney = document.getElementById("range-money");
+	var lineMoney = document.getElementById("line-money");
+	var distansMoney = rangeMoney.max - rangeMoney.min;
+	
+	var selectedDays = document.getElementById("selected-days");
+	var rangeDays = document.getElementById("range-days");
+	var lineDays = document.getElementById("line-days");
+	var distansDays = rangeDays.max - rangeDays.min;
+	
+	var isLineProgressNeed = CheakIsLineProgressNeed();
 
-rangeMoney.oninput = function() {
-	selectedMoney.value = transfotmToReadAbleFormat(rangeMoney.value);
-	lineMoney.style.width = ((rangeMoney.value -rangeMoney.min) * 100 / distansMoney) + "%";
+	
+	
+	rangeMoney.addEventListener('input', function(){
+		selectedMoney.value = transfotmToReadAbleFormat(rangeMoney.value);
+		isLineProgressNeed&&(lineMoney.style.width = ((rangeMoney.value -rangeMoney.min) * 100 / distansMoney) + "%");
+	})
+	rangeDays.addEventListener('input', function(){
+		selectedDays.innerHTML = rangeDays.value;
+		isLineProgressNeed&&(lineDays.style.width = ((rangeDays.value -rangeDays.min) * 100 / distansDays) + "%");
+	})
+
+	function CheakIsLineProgressNeed(){
+		//ПЕРЕДЕЛАТЬ navigator.userAgent
+		if(navigator['webkitTemporaryStorage']){
+			var progressLines = document.getElementsByClassName("range-progress-line");
+			for (var i = 0; i < progressLines.length; i++) {
+				progressLines[i].style.display = "block";
+			}
+			return true;
+		}
+		return false;
+	} 
 }
+InputRanges();
 
-var selectedDays = document.getElementById("selected-days");
-var rangeDays = document.getElementById("range-days");
-var lineDays = document.getElementById("line-days");
-var distansDays = rangeDays.max - rangeDays.min;
-
-rangeDays.oninput = function(){
-	selectedDays.innerHTML = rangeDays.value;
-	lineDays.style.width = ((rangeDays.value -rangeDays.min) * 100 / distansDays) + "%";
-}
 /******************************INPUT-FOR-RANGE************************************************/
-var permitionForMoneyInput = false;
-var penForMoneyInput = document.getElementById("pen-money");
-
-selectedMoney.onkeydown = function(event){
-	if(event.key == 'Enter'){
-		selectedMoney.onblur();
+var InputMoney = function(){
+	var selectedMoney = document.getElementById("selected-money");
+	var permitionForMoneyInput = false;	
+	var rangeMoney = document.getElementById("range-money");
+	var lineMoney = document.getElementById("line-money");
+	var distansMoney = rangeMoney.max - rangeMoney.min;
+	
+	selectedMoney.onkeydown = function(event){
+		if(event.key == 'Enter'){
+			FinishInput();
+		}
+		if(permitionForMoneyInput && givePemitionOnInput(event.key)){
+			return true;
+		}
+		return false;
+	};
+	selectedMoney.onpaste = function(){
+		return false;
 	}
-	if(permitionForMoneyInput && givePemitionOnInput(event.key)){
-		return true;
+	function givePemitionOnInput(key) {
+		if((key >= '0' && key <= '9' ) || (key == 'ArrowRight' || key == 'ArrowLeft' || key == 'Backspace')){
+			return true;
+		}
+		return false;
+	}
+	selectedMoney.addEventListener('blur', FinishInput);
+
+
+	function FinishInput(){
+		permitionForMoneyInput = false;
+		penForMoneyInput.style.display = "inline-block";
+		selectedMoney.classList.remove("m-pick-amount__selected-money--active");
+
+		var max = Number(rangeMoney.max);
+		var min = Number(rangeMoney.min);
+		var cur = transformFromReadAbleFormatToInt(selectedMoney.value);
+
+		if(cur > max){
+			rangeMoney.value = rangeMoney.max;
+			selectedMoney.value = transfotmToReadAbleFormat(rangeMoney.max);
+			lineMoney.style.width = "100%";
+		} else if(cur < min){
+			rangeMoney.value = rangeMoney.min;
+			selectedMoney.value = transfotmToReadAbleFormat(rangeMoney.min);
+			lineMoney.style.width = "0%";
+		} else {
+			rangeMoney.value = transformFromReadAbleFormatToInt(selectedMoney.value);
+			selectedMoney.value = transfotmToReadAbleFormat(selectedMoney.value.replace(/ /g, ""));
+			lineMoney.style.width = ((rangeMoney.value - rangeMoney.min) * 100 / distansMoney) + "%";
+		}
 	}
 
-	return false;
-}
-function givePemitionOnInput(key) {
-	if((key >= '0' && key <= '9' ) || (key == 'ArrowRight' || key == 'ArrowLeft' || key == 'Backspace'))
-	{
-		return true;
-	}
-	return false;
-}
-selectedMoney.onblur = function(){
-	permitionForMoneyInput = false;
-	penForMoneyInput.style.display = "inline-block";
-	selectedMoney.classList.remove("m-pick-amount__selected-money--active");
+	var penForMoneyInput = document.getElementById("pen-money");
+	penForMoneyInput.addEventListener('click',function(){
+		permitionForMoneyInput = true;
+		penForMoneyInput.style.display = "none";
+		selectedMoney.classList.add("m-pick-amount__selected-money--active");
+		selectedMoney.focus();
+	});
+} 
+InputMoney();
 
-/**********************Временно наверное***********************/
-	var max = Number(rangeMoney.max);
-	var min = Number(rangeMoney.min);
-	var cur = transformFromReadAbleFormatToInt(selectedMoney.value);
-
-	if(cur > max){
-		rangeMoney.value = rangeMoney.max;
-		selectedMoney.value = transfotmToReadAbleFormat(rangeMoney.max);
-		lineMoney.style.width = "100%";
-	} else if(cur < min){
-		rangeMoney.value = rangeMoney.min;
-		selectedMoney.value = transfotmToReadAbleFormat(rangeMoney.min);
-		lineMoney.style.width = "0%";
-	} else {
-		rangeMoney.value = transformFromReadAbleFormatToInt(selectedMoney.value);
-		selectedMoney.value = transfotmToReadAbleFormat(selectedMoney.value.replace(/ /g, ""));
-		lineMoney.style.width = ((rangeMoney.value - rangeMoney.min) * 100 / distansMoney) + "%";
-	}
-}
-penForMoneyInput.onclick = function(){
-	permitionForMoneyInput = true;
-	penForMoneyInput.style.display = "none";
-	selectedMoney.classList.add("m-pick-amount__selected-money--active");
-	selectedMoney.focus();
-}
 /*****************************SEND-SMS SLIDER*********************************************/
-var sendSmsSwitcher = document.getElementsByClassName("b-modal-send-sms__switcher");
-var sendSmsSlider = document.getElementById("b-modal-send-sms-slider");
-
-for (var i = 0; i < sendSmsSwitcher.length; i++) {
-	sendSmsSwitcher[i].onclick = switchSmsSlide;
-}
-
-function switchSmsSlide() {
-	var index = Number(this.dataset.index);	
-	sendSmsSlider.style.transform = "translateX(-"+index * 300+ "px)";
-	replaceSwitcherActive(index, sendSmsSwitcher);
-}
-/*костиль какой то*/
-window.onresize = function(event) {
-	if(window.screen.width >= 769) {	
-		sendSmsSlider.style.transform = "translateX(0px)";
-		instructionsSlider.style.transform = "translateX(0px)";
-		replaceSwitcherActive(0, sendSmsSwitcher);
-		replaceSwitcherActive(0, instructionsSwitcher);
+var SendSmsSlider = function(){
+	var sendSmsSwitcher = document.getElementsByClassName("b-modal-send-sms__switcher");
+	var sendSmsSlider = document.getElementById("b-modal-send-sms-slider");
+	
+	for (var i = 0, sliderLen = sendSmsSwitcher.length; i < sliderLen; i++) {
+		sendSmsSwitcher[i].addEventListener('click', switchSmsSlide);
 	}
-}
-
-/*второй костиль*/
-if(navigator['webkitTemporaryStorage']){
-	var progressLines = document.getElementsByClassName("range-progress-line");
-	for (var i = 0; i < progressLines.length; i++) {
-		progressLines[i].style.display = "block";
+	function switchSmsSlide() {
+		var index = Number(this.dataset.index);
+		sendSmsSlider.style.webkitTransform = "translateX(-"+index * 300+ "px)";
+		sendSmsSlider.style.transform = "translateX(-"+index * 300+ "px)";
+		replaceSwitcherActive(index, sendSmsSwitcher);
 	}
+	window.addEventListener('resize', function(){
+		if(document.documentElement.clientWidth >= 769){
+			sendSmsSlider.style.webkitTransform = "translateX(0px)";
+			sendSmsSlider.style.transform = "translateX(0px)";
+			replaceSwitcherActive(0, sendSmsSwitcher);
+		}
+	})
 }
-
-
+SendSmsSlider();
 /*****************************INSTRUCTIONS SLIDER*********************************************/
-var instructionsSwitcher = document.getElementsByClassName("l-instructions__switcher");
-var instructionsSlider = document.getElementById("instructions-slider");
-var prevBtn = document.getElementById("prev-btn");
-var nextBtn = document.getElementById("next-btn");
-var sliderCounter = 0;
-
-for (var i = 0; i < instructionsSwitcher.length; i++) {
-	instructionsSwitcher[i].onclick = switchInstructSlide;
-}
-
-prevBtn.onclick = function() {
-	if(--sliderCounter < 0){
-		sliderCounter = 2;		
+var InstrustionSlider = function(){
+	var instructionsSwitcher = document.getElementsByClassName("l-instructions__switcher");
+	var instructionsSlider = document.getElementById("instructions-slider");
+	var prevBtn = document.getElementById("prev-btn");
+	var nextBtn = document.getElementById("next-btn");
+	var sliderCounter = 0;
+	
+	for (var i = 0; i < instructionsSwitcher.length; i++) {
+		instructionsSwitcher[i].onclick = switchInstructSlide;
 	}
-	switchInstructSlideByBtn(sliderCounter);
-}
-
-nextBtn.onclick = function(){
-	if(++sliderCounter > 2){
-		sliderCounter = 0;
+	
+	prevBtn.onclick = function() {
+		if(--sliderCounter < 0){
+			sliderCounter = 2;		
+		}
+		switchInstructSlideByBtn(sliderCounter);
 	}
-	switchInstructSlideByBtn(sliderCounter);
+	
+	nextBtn.onclick = function(){
+		if(++sliderCounter > 2){
+			sliderCounter = 0;
+		}
+		switchInstructSlideByBtn(sliderCounter);
+	}
+	function switchInstructSlideByBtn(counter){
+		instructionsSlider.style.webkitTransform = "translateX(-"+sliderCounter* 320+ "px)";
+		instructionsSlider.style.transform = "translateX(-"+sliderCounter* 320+ "px)";
+		replaceSwitcherActive(counter, instructionsSwitcher);
+	}
+	
+	function switchInstructSlide() {
+		var index = Number(this.dataset.index);
+		instructionsSlider.style.webkitTransform ="translateX(-"+index * 320+ "px)";
+		instructionsSlider.style.transform = "translateX(-"+index * 320+ "px)";
+		replaceSwitcherActive(index, instructionsSwitcher);
+	}
+	window.addEventListener('resize', function(){
+		if(document.documentElement.clientWidth >= 769){
+			instructionsSlider.style.webkitTransform = "translateX(0px)";
+			instructionsSlider.style.transform = "translateX(0px)";
+			replaceSwitcherActive(0, instructionsSwitcher);
+		}
+	})
 }
-function switchInstructSlideByBtn(counter){
-	instructionsSlider.style.transform = "translateX(-"+sliderCounter* 320+ "px)";
-	replaceSwitcherActive(counter, instructionsSwitcher);
-}
-
-function switchInstructSlide() {
-	var index = Number(this.dataset.index);	
-	instructionsSlider.style.transform = "translateX(-"+index * 320+ "px)";
-	replaceSwitcherActive(index, instructionsSwitcher);
-}
-/****************************************************************************/
+InstrustionSlider();
+/**************************OTHERS FUNC*****************************************/
 function replaceSwitcherActive(index, switchers) {
 	for (var i = 0; i < switchers.length; i++) {
 		switchers[i].classList.remove("switchers__switcher--active");
 	}
 	switchers[index].classList.add("switchers__switcher--active");
 }
-
 function transfotmToReadAbleFormat(str) {
 	return str[0] + ' ' + str[1]+str[2]+str[3] + ' ' + str[4]+str[5]+str[6];
 }
-
 function transformFromReadAbleFormatToInt(str) {
 	var temp = "";
 	for (var i = 0; i < str.length; i++) {
