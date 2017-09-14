@@ -197,6 +197,25 @@ var InstrustionSlider = function(){
 	})
 }
 InstrustionSlider();
+/**************************QUESTIONS ANSWERS************************************/
+var QuestionsAnswers = function(){
+	var question = document.getElementsByClassName("b-question__label");
+	var answer = document.getElementsByClassName("b-question__answer");
+
+	for(var i = 0, len = question.length; i < len; i++){
+		question[i].addEventListener('click', openCloseAnswer.bind(i));
+	}
+	function openCloseAnswer(){	
+		if(answer[this].classList.contains("b-question__answer--open")){
+			answer[this].style.height = "0";
+			answer[this].classList.remove("b-question__answer--open");
+		} else {
+			answer[this].style.height = answer[this].scrollHeight + "px";
+			answer[this].classList.add("b-question__answer--open");
+		}
+	}
+}
+QuestionsAnswers();
 /**************************OTHERS FUNC*****************************************/
 function replaceSwitcherActive(index, switchers) {
 	for (var i = 0; i < switchers.length; i++) {
