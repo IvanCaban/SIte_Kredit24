@@ -14,14 +14,21 @@ var OpenCloseModalForms =  function(){
 	function openModalByTarget(target){
 		for(var i = 0, modalLength = modalFroms.length; i < modalLength; i++){
 			if(modalFroms[i] == target)
-				target.classList.remove("modal-form--active");
+				target.classList.remove("modal-form--animate");
+				setTimeout(function(){target.classList.remove("modal-form--active");}, 500);
+
 		}		
 	}
 	function openModal(id){
-		document.getElementById(id).classList.add("modal-form--active");
+		var tempElem = document.getElementById(id);
+		tempElem.classList.add("modal-form--active");
+		tempElem.classList.add("modal-form--animate");
 	}
 	function closeModal(id){
-		document.getElementById(id).classList.remove("modal-form--active");
+		var tempElem = document.getElementById(id);
+		tempElem.classList.remove("modal-form--animate");
+		setTimeout(function(){tempElem.classList.remove("modal-form--active");}, 500);
+
 	}
 }
 OpenCloseModalForms();
@@ -52,8 +59,8 @@ var InputRanges = function(){
 	})
 
 	function CheakIsLineProgressNeed(){
-		//ПЕРЕДЕЛАТЬ navigator.userAgent
-		if(navigator['webkitTemporaryStorage']){
+		//ПЕРЕДЕЛАТЬ navigator.userAgentnavigator['webkitTemporaryStorage']
+		if(!(/Firefox/.test(navigator.userAgent) || /Edge/.test(navigator.userAgent))){
 			var progressLines = document.getElementsByClassName("range-progress-line");
 			for (var i = 0; i < progressLines.length; i++) {
 				progressLines[i].style.display = "block";
